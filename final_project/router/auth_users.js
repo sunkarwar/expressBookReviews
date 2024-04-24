@@ -11,7 +11,7 @@ const isValid = (username)=>{ //returns boolean
 
 const authenticatedUser = (username,password)=>{ //returns boolean
    const userInDb = users.find(user=> {
-        return user.username == username && userInDb.password === password
+        return user.username == username && user.password === password
     });
 
     return (userInDb )
@@ -20,8 +20,8 @@ const authenticatedUser = (username,password)=>{ //returns boolean
 
 //only registered users can login
 regd_users.post("/login", (req,res) => {
-    const [username, password] = req.body;
-   
+    const username = req.body.username;
+    const password = req.body.password;
     if (!username || !password) {
         return res.status(404).json({message: "Error logging in"});
     }
