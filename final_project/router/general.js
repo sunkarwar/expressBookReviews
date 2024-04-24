@@ -5,13 +5,12 @@ let users = require("./auth_users.js").users;
 const public_users = express.Router();
 
 const userExists = (username)=>{
-console.log(JSON.stringify(users))
-
-const searchedUser = users.filter((user) => { 
-    if(user.username == username){
-        return user
-    } else {console.log("not found")} })
-return searchedUser.length
+const filteredUser = users.filter((user) => user.username == username);
+if (filteredUser.length){
+        return true
+    } else {
+        return false
+    } 
 }
 
 public_users.post("/register", (req,res) => {
