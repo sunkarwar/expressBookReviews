@@ -22,7 +22,7 @@ public_users.post("/register", (req,res) => {
     res.send(`User with name ${username} already exists`);
   } else {
     users.push({username, password});
-    res.send(`User added : ${JSON.stringify(users)}`)
+    res.send(`User ${username} added.`)
   }
 });
 // Get the book list available in the shop
@@ -39,7 +39,7 @@ public_users.get('/isbn/:isbn',function (req, res) {
   if (filteredBook){
     return res.status(200).json({message: filteredBook})
   }else {
-  return res.status(300).json({message: `Book with isbn ${isbn} is not found! Try again with correct isbn`});
+  return res.status(200).json({message: `Book with isbn ${isbn} is not found! Try again with correct isbn`});
   }
  });
 // Get book details based on author
